@@ -1,0 +1,45 @@
+class Main {
+    public static void main(String[] args) {
+        QuanLyPhongHoc quanLyPhongHoc = new QuanLyPhongHoc();
+
+        PhongLyThuyet phongLyThuyet1 = new PhongLyThuyet("LT01", "A", 100.0, 10, true);
+        quanLyPhongHoc.themPhong(phongLyThuyet1);
+
+        PhongMayTinh phongMayTinh1 = new PhongMayTinh("MT01", "B", 50.0, 5, 20);
+        quanLyPhongHoc.themPhong(phongMayTinh1);
+
+        PhongThiNghiem phongThiNghiem1 = new PhongThiNghiem("TN01", "C", 80.0, 8, "Hoa hoc", 15, true);
+        quanLyPhongHoc.themPhong(phongThiNghiem1);
+
+        System.out.println("Danh sach cac phong hoc:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        System.out.println("\nDanh sach cac phong hoc dat chuan:");
+        quanLyPhongHoc.inDanhSachPhongDatChuan();
+
+        quanLyPhongHoc.sapXepTheoDayNhaTangDan();
+        System.out.println("\nDanh sach cac phong hoc sap xep tang dan theo day nha:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        quanLyPhongHoc.sapXepTheoDienTichGiamDan();
+        System.out.println("\nDanh sach cac phong hoc sap xep giam dan theo dien tich:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        quanLyPhongHoc.sapXepTheoSoBongDenTangDan();
+        System.out.println("\nDanh sach cac phong hoc sap xep tang dan theo so bong den:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        quanLyPhongHoc.capNhatSoMayTinh("MT01", 30);
+        System.out.println("\nDanh sach cac phong hoc sau khi cap nhat so may tinh:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        quanLyPhongHoc.xoaPhong("TN01");
+        System.out.println("\nDanh sach cac phong hoc sau khi xoa phong TN01:");
+        quanLyPhongHoc.inDanhSachPhong();
+
+        System.out.println("\nTong so phong hoc: " + quanLyPhongHoc.tongSoPhongHoc());
+
+        System.out.println("\nDanh sach cac phong hoc co 20 may tinh:");
+        quanLyPhongHoc.inDanhSachPhongMay(20);
+    }
+}
