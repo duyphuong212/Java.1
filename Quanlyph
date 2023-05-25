@@ -1,0 +1,84 @@
+class QuanLyPhongHoc {
+    private List<PhongHoc> danhSachPhong;
+
+    public QuanLyPhongHoc() {
+        danhSachPhong = new ArrayList<>();
+    }
+
+    public boolean themPhong(PhongHoc phongHoc) {
+        for (PhongHoc phong : danhSachPhong) {
+            if (phong.getMaPhong().equals(phongHoc.getMaPhong())) {
+                return false; // Phòng đã tồn tại trong danh sách
+            }
+        }
+        danhSachPhong.add(phongHoc);
+        return true; // Thêm phòng thành công
+    }
+
+    public PhongHoc timKiemPhong(String maPhong) {
+        for (PhongHoc phong : danhSachPhong) {
+            if (phong.getMaPhong().equals(maPhong)) {
+                return phong;
+            }
+        }
+        return null; // Không tìm thấy phòng
+    }
+
+    public void inDanhSachPhong() {
+        for (PhongHoc phong : danhSachPhong) {
+            System.out.println(phong.toString());
+        }
+    }
+
+    public void inDanhSachPhongDatChuan() {
+        for (PhongHoc phong : danhSachPhong) {
+            if (phong.datChuan()) {
+                System.out.println(phong.toString());
+            }
+        }
+    }
+
+    public void sapXepTheoDayNhaTangDan() {
+        danhSachPhong.sort(Comparator.comparing(PhongHoc::getDayNha));
+    }
+
+    public void sapXepTheoDienTichGiamDan() {
+        danhSachPhong.sort(Comparator.comparing(PhongHoc::getDienTich).reversed());
+    }
+
+    public void sapXepTheoSoBongDenTangDan() {
+        danhSachPhong.sort(Comparator.comparing(PhongHoc::getSoBongDen));
+    }
+
+    public void capNhatSoMayTinh(String maPhong, int soMayTinh) {
+        PhongHoc phongHoc = timKiemPhong(maPhong);
+        if (phongHoc instanceof PhongMayTinh) {
+            ((PhongMayTinh) phongHoc).setSoMayTinh(soMayTinh);
+        }
+    }
+
+    public boolean xoaPhong(String maPhong) {
+        for (PhongHoc phong : danhSachPhong) {
+            if (phong.getMaPhong().equals(maPhong)) {
+                danhSachPhong.remove(phong);
+                return true; // Xóa phòng thành công
+            }
+        }
+        return false; // Không tìm thấy phòng
+    }
+
+    public int tongSoPhongHoc() {
+        return danhSachPhong.size();
+    }
+
+    public void inDanhSachPhongMay(int soMay) {
+        for (PhongHoc phong : danhSachPhong) {
+            if (phong instanceof PhongMayTinh) {
+                PhongMayTinh phongMayTinh = (PhongMayTinh) phong;
+                if (phongMayTinh.getSoMayTinh() == soMay) {
+                    System.out.println(phong.toString());
+                }
+            }
+        }
+    }
+}
